@@ -120,13 +120,13 @@ export const createHistoria = async (req, res) => {
 
 export const getHistoria = async (req, res) => {
     const historia = await Historia.findById(req.params.id)
-    if (!historia) return res.status(404).json({message:'Task not found'})
+    if (!historia) return res.status(404).json({message:'Historia no encontrada'})
     res.json(historia)
 };
 
 export const deleteHistoria=  async (req, res) => {
     const historia = await Historia.findByIdAndDelete(req.params.id);
-    if (!historia) return res.status(404).json({message:'Task not found'});
+    if (!historia) return res.status(404).json({message:'Historia no encontrada'});
     return res.sendStatus(204);
 };
 
@@ -134,6 +134,6 @@ export const updateHistoria = async (req, res) => {
     const historia = await Historia.findByIdAndUpdate(req.params.id, req.body, {
         new:true
     })
-    if (!historia) return res.status(404).json({message:'Task not found'})
+    if (!historia) return res.status(404).json({message:'Historia no encontrada'})
     res.json(historia)
 };
