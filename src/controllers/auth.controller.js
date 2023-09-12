@@ -3,16 +3,38 @@ import bcrypt from 'bcryptjs';
 import {createAccessToken} from '../libs/jwt.js';
 
 export const register = async (req, res) => {
-    const {email, password, username} = req.body
+    const {
+        //username
+        email,
+            password,
+            cod_emp,
+            documento:{tipo_doc, num_doc},
+            nombres,
+            apellidos,
+            fecha_nacimiento,
+            genero,
+            telefono,
+            direccion,
+            especialidad
+    } = req.body
 
     try {
 
         const passwordHash = await bcrypt.hash(password, 10);
 
         const newUser = new User({
-            username,
+            //username,
             email,
             password: passwordHash,
+            cod_emp,
+            documento:{tipo_doc, num_doc},
+            nombres,
+            apellidos,
+            fecha_nacimiento,
+            genero,
+            telefono,
+            direccion,
+            especialidad
         });
         const userSaved = await newUser.save();
         const token = await createAccessToken({id: userSaved.id})
@@ -21,7 +43,7 @@ export const register = async (req, res) => {
         res.cookie('token', token)
         res.json({
             id: userSaved._id,
-            username: userSaved.username,
+            //username: userSaved.username,
             email: userSaved.email,
             createdAt: userSaved.createdAt,
             updatedAt: userSaved.updatedAt,
@@ -52,7 +74,10 @@ export const login = async (req, res) => {
         res.cookie('token', token)
         res.json({
             id: userFound._id,
-            username: userFound.username,
+            //username: userFound.username,
+            cod_emp:userFound.cod_emp,
+            nombres:userFound.nombres,
+            apellidos:userFound.apellidos,
             email: userFound.email,
             createdAt: userFound.createdAt,
             updatedAt: userFound.updatedAt,
@@ -77,7 +102,7 @@ export const profile = async (req, res) => {
 
     return res.json({
         id:userFound._id,
-        username: userFound.username,
+        //username: userFound.username,
         email: userFound.email,
         createdAt:userFound.createdAt,
         updatedAt: userFound.updatedAt,
