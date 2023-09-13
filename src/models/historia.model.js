@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const historiaSchema = new mongoose.Schema({
     "cod_historia": { type: Number, required: true, unique:true},
-    "cod_paciente": { type: Number, required: true},
+    "paciente": { type: mongoose.Schema.Types.ObjectId, ref: 'Paciente', required: true},
     "medico": { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     "rif": {
         "dias": {type: Number, required: true},

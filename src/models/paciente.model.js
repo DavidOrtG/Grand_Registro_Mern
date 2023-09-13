@@ -1,28 +1,10 @@
 import mongoose from 'mongoose';
 
 
-const userSchema = new mongoose.Schema({
-
-    /**   username: {
-         type: String,
-         required: true,
-         trim: true
-     },**/
-    email: {
-        type: String,
+const pacienteSchema = new mongoose.Schema({
+    cod_paciente: {
+        type: Number,
         required: true,
-        trim: true,
-        unique: true
-    },
-    password: {
-        type: String,
-        required: true,
-    },
-    cod_emp: {
-        type: String,
-        required: true,
-        trim: true,
-        unique: true
     },
     documento: {
         tipo_doc: {
@@ -34,7 +16,7 @@ const userSchema = new mongoose.Schema({
             required: true,
         },
     },
-    nombres:{
+    nombres: {
         type: String,
         required: true,
     },
@@ -54,14 +36,20 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     }],
+    ocupacion: {
+        type: String,
+        required: true,
+    },
     direccion: {
         type: String,
         required: true,
-      },
-    especialidad: [{type: mongoose.Schema.Types.ObjectId, ref: 'Especialidad', required: true
-    }],
+    },
+    correo_e: {
+        type: String,
+        required: true,
+    },
 }, {
     timestamps: true
 })
 
-export default mongoose.model('User', userSchema)
+export default mongoose.model('Paciente', pacienteSchema)

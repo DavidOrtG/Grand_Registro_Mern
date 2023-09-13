@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import authRoutes from "./routes/auth.routes.js";
 import historiasRoutes from "./routes/historias.routes.js";
 import especialidadesRoutes from "./routes/especialidades.routes.js";
+import pacientesRoutes from "./routes/pacientes.routes.js";
 
 const app = express();
 
@@ -15,5 +16,6 @@ app.use(cookieParser());
 app.use("/api", authRoutes);
 app.use("/api", historiasRoutes);
 app.use("/api", especialidadesRoutes);
+app.use("/api", pacientesRoutes);
 
 export default app;

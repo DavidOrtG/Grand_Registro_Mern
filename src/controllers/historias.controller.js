@@ -8,7 +8,7 @@ export const getHistorias = async (req, res) => {
 export const createHistoria = async (req, res) => {
     const { 
         cod_historia, 
-        cod_paciente, 
+        paciente, 
         medico, 
         rif: { dias, meses, anos }, 
         fecha, 
@@ -42,7 +42,7 @@ export const createHistoria = async (req, res) => {
 
     const newHistoria = new Historia({
         cod_historia,
-        cod_paciente,
+        paciente,
         medico:req.user.id,
         rif: {
           dias,
