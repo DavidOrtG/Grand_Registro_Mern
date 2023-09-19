@@ -8,12 +8,14 @@ import {
         deletePaciente,
 
 } from '../controllers/pacientes.controller.js';
+import { createPacienteSchema } from '../schemas/paciente.schema.js';
+import { validateSchema } from '../middlewares/validator.middleware.js';
 
 const router = Router();
 
 router.get('/pacientes', authRequired, getPacientes);
 router.get('/pacientes/:id', authRequired, getPaciente);
-router.post('/pacientes', authRequired, createPaciente);
+router.post('/pacientes', authRequired, validateSchema(createPacienteSchema),createPaciente);
 router.delete('/pacientes/:id', authRequired, deletePaciente);
 router.put('/pacientes/:id', authRequired, updatePaciente);
 
