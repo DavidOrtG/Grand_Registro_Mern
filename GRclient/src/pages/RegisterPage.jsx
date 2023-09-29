@@ -21,9 +21,9 @@ function RegisterPage() {
                     apellidos: values.apellidos,
                     fecha_nacimiento: values.fecha_nacimiento,
                     genero: values.genero,
-                    telefono: values.telefono,
+                    telefono: [values.telefono],
                     direccion: values.direccion,
-                    especialidad: values.especialidad
+                    especialidad: [values.especialidad]
                   });
                 console.log(res)
             })}>
@@ -110,9 +110,9 @@ function RegisterPage() {
                     {...register('especialidad', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
                 >
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
+                    <option value="6500e3b05a28ee20717c98f6">Optometria</option>
+                    <option value="6500e4b1d8134d7ef67fe910">Oftalmologia</option>
+                    <option value="6500e5b7dec962d892173a24">Ortoptica</option>
                 </select>
                 <button type='submit'>
                     Registrarse
