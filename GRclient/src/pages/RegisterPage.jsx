@@ -1,5 +1,5 @@
-import { useForm } from 'react-hook-form'
-import { registerRequest } from '../api/auth'
+import { useForm } from 'react-hook-form';
+import { registerRequest } from '../api/auth';
 
 function RegisterPage() {
 
@@ -15,7 +15,7 @@ function RegisterPage() {
                     cod_emp: values.cod_emp,
                     documento: {
                       tipo_doc: values.tipo_doc,
-                      num_doc: values.num_doc,
+                      num_doc: values.num_doc
                     },
                     nombres: values.nombres,
                     apellidos: values.apellidos,
@@ -76,8 +76,8 @@ function RegisterPage() {
                     className='w-full bg-zinc-700 text-white px-4 py2 rounded-md my-2'
                     placeholder='Apellidos'
                 />
-                <label htmlFor="fecha_nacimientos">Fecha de Nacimiento:</label>
-                <input type="date" {...register('fecha_nacimientos', { required: true })}
+                <label htmlFor="fecha_nacimiento">Fecha de Nacimiento:</label>
+                <input type="date" {...register('fecha_nacimiento', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py2 rounded-md my-2'
                     placeholder='Fecha de Nacimiento'
                 />
