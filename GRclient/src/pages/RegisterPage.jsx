@@ -9,7 +9,9 @@ function RegisterPage() {
         <div className='bg-zinc-800 max-w-md p-10 rounded-md'>
             <form onSubmit={handleSubmit(async (values) => {
                 console.log(values);
-                const res = await registerRequest({
+                try {
+                const res = await registerRequest(
+                    {
                     email: values.email,
                     password: values.password,
                     cod_emp: values.cod_emp,
@@ -21,18 +23,22 @@ function RegisterPage() {
                     apellidos: values.apellidos,
                     fecha_nacimiento: values.fecha_nacimiento,
                     genero: values.genero,
-                    telefono: [values.telefono],
+                    telefono: values.telefono,
                     direccion: values.direccion,
-                    especialidad: [values.especialidad]
-                  });
+                    especialidad: values.especialidad
+                    }
+                  );
                 console.log(res)
+            } catch (error) {
+                console.error("Error en la solicitud:", error);
+            }
             })}>
                 <label htmlFor="email">Email:</label>
                 <input type="email" {...register('email', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py2 rounded-md my-2'
                     placeholder='Email'
                 />
-                <label htmlFor="password">Password:</label>
+                <label htmlFor="password">Contraseña:</label>
                 <input type="password" {...register('password', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py2 rounded-md my-2'
                     placeholder='Contraseña'
