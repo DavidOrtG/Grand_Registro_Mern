@@ -1,9 +1,7 @@
 import {z} from 'zod';
 
 export const registerSchema = z.object({
-    username: z.string({
-        required_error: 'Username is required'
-    }),
+
     email:z.string({
         required_error: 'Email is required'
     }).email({
@@ -37,15 +35,15 @@ export const registerSchema = z.object({
     genero: z.string({
         required_error: 'Genero is required'
     }),
-    telefono: z.array({
+    /**telefono: z.array({
         required_error: 'Telefono is required'
-    }),
+    }),**/
     direccion: z.string({
         required_error: 'Direccion is required'
     }),
-    especialidad: z.array({
+    /**especialidad: z.array({
         required_error: 'Especialidad is required'
-    }),
+    }),**/
 });
 
     

@@ -15,7 +15,8 @@ const router = Router();
 
 router.get('/especialidades', authRequired, getEspecialidades);
 router.get('/especialidades/:id', authRequired, getEspecialidad);
-router.post('/especialidades', authRequired, validateSchema(createEspecialidadSchema), createEspecialidad);
+//router.post('/especialidades', authRequired, validateSchema(createEspecialidadSchema), createEspecialidad);
+router.post('/especialidades', authRequired, createEspecialidad);
 router.delete('/especialidades/:id', authRequired, deleteEspecialidad);
 router.put('/especialidades/:id', authRequired, updateEspecialidad);
 
