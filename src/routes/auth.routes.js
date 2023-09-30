@@ -11,6 +11,8 @@ import { registerSchema, loginSchema} from '../schemas/auth.schema.js';
 
 const router = Router();
 
+/**Se comentan las rutas con validator temporalmente */
+
 //router.post('/register', validateSchema(registerSchema),register);
 router.post('/register',register);
 //router.post('/login', validateSchema(loginSchema), login);
