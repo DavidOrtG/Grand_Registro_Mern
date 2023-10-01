@@ -35,15 +35,15 @@ export const registerSchema = z.object({
     genero: z.string({
         required_error: 'Genero is required'
     }),
-    /**telefono: z.array({
+    telefono: z.string({
         required_error: 'Telefono is required'
-    }),**/
+    }),
     direccion: z.string({
         required_error: 'Direccion is required'
     }),
-    /**especialidad: z.array({
+    especialidad: z.string({
         required_error: 'Especialidad is required'
-    }),**/
+    }),
 });
 
     
