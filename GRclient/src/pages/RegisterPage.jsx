@@ -1,11 +1,17 @@
 import { useForm } from 'react-hook-form';
-import {useAuth} from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
+import { useEffect } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom'
 
 function RegisterPage() {
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, formState: { errors }, } = useForm();
+    const { signup, user, isAuthenticated, errors: registerErrors} = useAuth();
+    const navigate = useNavigate()
 
-    const {signup, user} = useAuth();
+    useEffect(() => {
+        if (isAuthenticated) navigate('/tasks')
+    }, [isAuthenticated])
 
     console.log(user)
 
@@ -15,25 +21,41 @@ function RegisterPage() {
 
     return (
         <div className='bg-zinc-800 max-w-md p-10 rounded-md'>
+            {
+                registerErrors.map((error, i) => (
+                    <div className='bg-red-500 p-2 text-white' key={i}>
+                        {error}
+                    </div>
+                ))
+            }
             <form onSubmit={onSubmit}>
                 <label htmlFor="email">Email:</label>
                 <input type="email" id="email" {...register('email', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py2 rounded-md my-2'
                     placeholder='Email'
                 />
+
+                {errors.email && (<p className="text-red-500"> El email es requerido!</p>)}
+
                 <label htmlFor="password">Contraseña:</label>
                 <input type="password" id="password" {...register('password', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py2 rounded-md my-2'
                     placeholder='Contraseña'
                 />
+
+                {errors.password && (<p className="text-red-500"> La contraseña es requerida!</p>)}
+
                 <label htmlFor="cod_emp">Codigo Empleado:</label>
                 <input type="text" id="cod_emp" {...register('cod_emp', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py2 rounded-md my-2'
                     placeholder='Codigo Empleado'
                     onInput={(e) => {
-                        e.target.value = e.target.value.replace(/\D/g, ''); // Eliminar caracteres que no sean números
+                        e.target.value = e.target.value.replace(/\D/g, '');
                     }}
                 />
+
+                {errors.cod_emp && (<p className="text-red-500"> El codigo de empleado es requerido!</p>)}
+
                 <label>Número y tipo de Documento</label>
                 <div className="flex gap-4">
                     <input
@@ -42,9 +64,10 @@ function RegisterPage() {
                         className='w-2/3 bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
                         placeholder='Número de Documento'
                         onInput={(e) => {
-                            e.target.value = e.target.value.replace(/\D/g, ''); // Eliminar caracteres que no sean números
+                            e.target.value = e.target.value.replace(/\D/g, '');
                         }}
                     />
+
                     <select
                         name="tipo_doc"
                         {...register('tipo_doc', { required: true })}
@@ -55,21 +78,33 @@ function RegisterPage() {
                         <option value="otros">Otros</option>
                     </select>
                 </div>
+
+                {errors.num_doc && (<p className="text-red-500"> El numero de documento es requerido!</p>)}
+
                 <label htmlFor="nombres">Nombres:</label>
                 <input type="text" id="nombres" {...register('nombres', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py2 rounded-md my-2'
                     placeholder='Nombres'
                 />
+
+                {errors.nombres && (<p className="text-red-500"> Los nombres son requeridos!</p>)}
+
                 <label htmlFor="apellidos">Apellidos:</label>
                 <input type="text" id="apellidos" {...register('apellidos', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py2 rounded-md my-2'
                     placeholder='Apellidos'
                 />
+
+                {errors.apellidos && (<p className="text-red-500"> Los apellidos son requeridos!</p>)}
+
                 <label htmlFor="fecha_nacimiento">Fecha de Nacimiento:</label>
                 <input type="date" id="fecha_nacimiento" {...register('fecha_nacimiento', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py2 rounded-md my-2'
                     placeholder='Fecha de Nacimiento'
                 />
+
+                {errors.apellidos && (<p className="text-red-500"> Los apellidos son requeridos!</p>)}
+
                 <label htmlFor="genero">Genero:</label>
                 <select
                     name="genero" id="genero"
@@ -85,14 +120,19 @@ function RegisterPage() {
                     className='w-full bg-zinc-700 text-white px-4 py2 rounded-md my-2'
                     placeholder='Telefono'
                     onInput={(e) => {
-                        e.target.value = e.target.value.replace(/\D/g, ''); // Eliminar caracteres que no sean números
+                        e.target.value = e.target.value.replace(/\D/g, '');
                     }}
                 />
+                {errors.apellidos && (<p className="text-red-500"> El numero de telefono es requerido!</p>)}
+
                 <label htmlFor="direccion">Dirección:</label>
                 <input type="text" id="direccion" {...register('direccion', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py2 rounded-md my-2'
                     placeholder='Dirección'
                 />
+
+                {errors.apellidos && (<p className="text-red-500"> La dirección es requerida!</p>)}
+
                 <label htmlFor="especialidad">Especialidad:</label>
                 <select
                     name="especialidad" id="especialidad"
