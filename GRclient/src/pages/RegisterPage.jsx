@@ -1,55 +1,38 @@
 import { useForm } from 'react-hook-form';
-import { registerRequest } from '../api/auth';
+import {useAuth} from '../context/AuthContext';
 
 function RegisterPage() {
 
     const { register, handleSubmit } = useForm();
 
+    const {signup, user} = useAuth();
+
+    console.log(user)
+
+    const onSubmit = handleSubmit(async (values) => {
+        signup(values);
+    });
+
     return (
         <div className='bg-zinc-800 max-w-md p-10 rounded-md'>
-            <form onSubmit={handleSubmit(async (values) => {
-                console.log(values);
-                try {
-                const res = await registerRequest(
-                    {
-                    email: values.email,
-                    password: values.password,
-                    cod_emp: values.cod_emp,
-                    documento: {
-                      tipo_doc: values.tipo_doc,
-                      num_doc: values.num_doc
-                    },
-                    nombres: values.nombres,
-                    apellidos: values.apellidos,
-                    fecha_nacimiento: values.fecha_nacimiento,
-                    genero: values.genero,
-                    telefono: values.telefono,
-                    direccion: values.direccion,
-                    especialidad: values.especialidad
-                    }
-                  );
-                console.log(res)
-            } catch (error) {
-                console.error("Error en la solicitud:", error);
-            }
-            })}>
+            <form onSubmit={onSubmit}>
                 <label htmlFor="email">Email:</label>
-                <input type="email" {...register('email', { required: true })}
+                <input type="email" id="email" {...register('email', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py2 rounded-md my-2'
                     placeholder='Email'
                 />
                 <label htmlFor="password">Contraseña:</label>
-                <input type="password" {...register('password', { required: true })}
+                <input type="password" id="password" {...register('password', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py2 rounded-md my-2'
                     placeholder='Contraseña'
                 />
                 <label htmlFor="cod_emp">Codigo Empleado:</label>
-                <input type="text" {...register('cod_emp', { required: true })}
+                <input type="text" id="cod_emp" {...register('cod_emp', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py2 rounded-md my-2'
                     placeholder='Codigo Empleado'
                     onInput={(e) => {
                         e.target.value = e.target.value.replace(/\D/g, ''); // Eliminar caracteres que no sean números
-                      }}
+                    }}
                 />
                 <label>Número y tipo de Documento</label>
                 <div className="flex gap-4">
@@ -60,7 +43,7 @@ function RegisterPage() {
                         placeholder='Número de Documento'
                         onInput={(e) => {
                             e.target.value = e.target.value.replace(/\D/g, ''); // Eliminar caracteres que no sean números
-                          }}
+                        }}
                     />
                     <select
                         name="tipo_doc"
@@ -73,23 +56,23 @@ function RegisterPage() {
                     </select>
                 </div>
                 <label htmlFor="nombres">Nombres:</label>
-                <input type="text" {...register('nombres', { required: true })}
+                <input type="text" id="nombres" {...register('nombres', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py2 rounded-md my-2'
                     placeholder='Nombres'
                 />
                 <label htmlFor="apellidos">Apellidos:</label>
-                <input type="text" {...register('apellidos', { required: true })}
+                <input type="text" id="apellidos" {...register('apellidos', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py2 rounded-md my-2'
                     placeholder='Apellidos'
                 />
                 <label htmlFor="fecha_nacimiento">Fecha de Nacimiento:</label>
-                <input type="date" {...register('fecha_nacimiento', { required: true })}
+                <input type="date" id="fecha_nacimiento" {...register('fecha_nacimiento', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py2 rounded-md my-2'
                     placeholder='Fecha de Nacimiento'
                 />
                 <label htmlFor="genero">Genero:</label>
                 <select
-                    name="genero"
+                    name="genero" id="genero"
                     {...register('genero', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
                 >
@@ -98,21 +81,21 @@ function RegisterPage() {
                     <option value="Otro">Otro</option>
                 </select>
                 <label htmlFor="telefono">Telefono:</label>
-                <input type="text" {...register('telefono', { required: true })}
+                <input type="text" id="telefono" {...register('telefono', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py2 rounded-md my-2'
                     placeholder='Telefono'
                     onInput={(e) => {
                         e.target.value = e.target.value.replace(/\D/g, ''); // Eliminar caracteres que no sean números
-                      }}
+                    }}
                 />
                 <label htmlFor="direccion">Dirección:</label>
-                <input type="text" {...register('direccion', { required: true })}
+                <input type="text" id="direccion" {...register('direccion', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py2 rounded-md my-2'
                     placeholder='Dirección'
                 />
                 <label htmlFor="especialidad">Especialidad:</label>
                 <select
-                    name="especialidad"
+                    name="especialidad" id="especialidad"
                     {...register('especialidad', { required: true })}
                     className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
                 >
