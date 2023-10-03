@@ -32,9 +32,9 @@ export const AuthProvider = ({ children }) => {
                 apellidos: user.apellidos,
                 fecha_nacimiento: user.fecha_nacimiento,
                 genero: user.genero,
-                telefono: user.telefono,
+                telefono: [user.telefono],
                 direccion: user.direccion,
-                especialidad: user.especialidad
+                especialidad: [user.especialidad]
                 });
             console.log(res.data);
             setUser(res.data);
