@@ -13,10 +13,10 @@ const router = Router();
 
 /**Se comentan las rutas con validator temporalmente */
 
-//router.post('/register', validateSchema(registerSchema),register);
-router.post('/register',register);
-//router.post('/login', validateSchema(loginSchema), login);
-router.post('/login', login);
+router.post('/register', validateSchema(registerSchema),register);
+//router.post('/register',register);
+router.post('/login', validateSchema(loginSchema), login);
+//router.post('/login', login);
 
 router.post('/logout', logout);
 router.get("/profile", authRequired, profile);
