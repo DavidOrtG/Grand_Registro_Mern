@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/AuthContext';
 import { useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom'
-import {Link} from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 function RegisterPage() {
 
@@ -11,7 +11,7 @@ function RegisterPage() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (isAuthenticated) navigate('/tasks')
+        if (isAuthenticated) navigate('/historias')
     }, [isAuthenticated])
 
     console.log(user)
