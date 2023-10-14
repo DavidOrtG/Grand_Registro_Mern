@@ -22,10 +22,10 @@ function TasksFormPage() {
                     <div style={{ display: 'flex', justifyContent: 'space-between', }}>
                         <span style={{ marginRight: '10px', whiteSpace: "nowrap", verticalAlign: 'middle' }}> HISTORIA CLINICA</span>
                         <div className="flex gap-4">
-                            <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>Número de Cédula:</span>
+                            <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>Número de Documento:</span>
 
                             <input type="text" className='w-2/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                placeholder='Numero de Cedula' {...register('num_doc', { required: true })}
+                                placeholder='Numero de Documento' {...register('num_doc', { required: true })}
                                 onInput={(e) => {
                                     e.target.value = e.target.value.replace(/\D/g, '');
                                 }}
@@ -122,9 +122,9 @@ function TasksFormPage() {
                     </div>
 
                     <div>
-                        <label htmlFor="motivo" style={{ whiteSpace: "nowrap", marginRight: '10px' }}>Motivo de la Consulta</label>
-                        <textarea rows='2' id='motivo' placeholder="Motivo"
-                            {...register('motivo')}
+                        <label htmlFor="motivos" style={{ whiteSpace: "nowrap", marginRight: '10px' }}>Motivo de la Consulta</label>
+                        <textarea rows='2' id='motivos' placeholder="Motivos"
+                            {...register('motivos')}
                             className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
                         ></textarea>
 
