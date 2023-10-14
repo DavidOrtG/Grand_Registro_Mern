@@ -9,7 +9,7 @@ const historiaSchema = new mongoose.Schema({
         "meses": {type: Number, required: true},
         "anos": {type: Number, required: true}
     },
-    "fecha": {type: Date, default: Date.now,required: true},
+    "fecha": {type: Date, required: true},
     "motivos": {type: String, required: true},
     "antecedentes": {type: String},
     "examen_externo": {type: String},
