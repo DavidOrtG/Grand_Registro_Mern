@@ -4,12 +4,14 @@ import { useTasks } from "../context/TaskContext";
 function TasksFormPage() {
 
     const { register, handleSubmit } = useForm();
-    const { createTask, tasks } = useTasks()
+    const { createTask, tasks} = useTasks()
     console.log(createTask());
 
-    const onSubmit = handleSubmit(async (data) => {
+    const onSubmit = handleSubmit((data) => {
         createTask(data);
     });
+
+    console.log(tasks);
 
     return (
 
@@ -41,7 +43,7 @@ function TasksFormPage() {
                     </div>
 
                     <div style={{ display: 'flex', justifyContent: 'space-between', }}>
-                        <label htmlFor="rif" style={{ whiteSpace: "nowrap", marginRight: '30px' }}> Tiempo desde ultima consulta (Rif): </label>
+                        <label style={{ whiteSpace: "nowrap", marginRight: '30px' }}> Tiempo desde ultima consulta (Rif): </label>
                         <label htmlFor="dias" style={{ marginRight: '10px' }}>Dias: </label>
                         <input id='dias' type="text" style={{ whiteSpace: "nowrap", marginRight: '20px', verticalAlign: 'middle' }}
                             {...register('dias', { required: true })}
@@ -171,13 +173,13 @@ function TasksFormPage() {
                                     <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>O.D:</span>
 
                                     <input type="text" className='w-2/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                        {...register('derecho', { required: true })}
+                                        {...register('lejanaDerechoSinCorreccion', { required: true })}
 
                                     />
 
                                     <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>O.I:</span>
                                     <input type="text" className='w-2/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                        {...register('izquierdo', { required: true })}
+                                        {...register('lejanaIzquierdoSinCorreccion', { required: true })}
 
                                     />
                                 </div>
@@ -188,13 +190,13 @@ function TasksFormPage() {
                                 <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>O.D:</span>
 
                                 <input type="text" className='w-2/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                    {...register('derecho', { required: true })}
+                                    {...register('proximaDerechoSinCorreccion', { required: true })}
 
                                 />
 
                                 <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>O.I:</span>
                                 <input type="text" className='w-2/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                    {...register('izquierdo', { required: true })}
+                                    {...register('proximaIzquierdoSinCorreccion', { required: true })}
 
                                 />
                             </div>
@@ -211,13 +213,13 @@ function TasksFormPage() {
                                     <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle', marginRight: '10px' }}>O.D:</span>
 
                                     <input type="text" className='w-2/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                        {...register('derecho', { required: true })}
+                                        {...register('lejanaDerechoConCorreccion', { required: true })}
 
                                     />
 
                                     <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle', marginRight: '10px' }}>O.I:</span>
                                     <input type="text" className='w-2/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                        {...register('izquierdo', { required: true })}
+                                        {...register('lejanaIzquierdoConCorreccion', { required: true })}
 
                                     />
                                 </div>
@@ -228,13 +230,13 @@ function TasksFormPage() {
                                 <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle', marginRight: '10px' }}>O.D:</span>
 
                                 <input type="text" className='w-2/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                    {...register('derecho', { required: true })}
+                                    {...register('proximaDerechoConCorreccion', { required: true })}
 
                                 />
 
                                 <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle', marginRight: '10px' }}>O.I:</span>
                                 <input type="text" className='w-2/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                    {...register('izquierdo', { required: true })}
+                                    {...register('proximaIzquierdoConCorreccion', { required: true })}
 
                                 />
                             </div>
@@ -246,13 +248,13 @@ function TasksFormPage() {
                                 <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>O.D:</span>
 
                                 <input type="text" className='w-2/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                    {...register('derecho', { required: true })}
+                                    {...register('coverTestDerecho', { required: true })}
 
                                 />
 
                                 <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>O.I:</span>
                                 <input type="text" className='w-2/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                    {...register('izquierdo', { required: true })}
+                                    {...register('coverTestIzquierdo', { required: true })}
 
                                 />
                             </div>
@@ -272,13 +274,13 @@ function TasksFormPage() {
                                 <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>O.D:</span>
 
                                 <input type="text" className='w-2/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                    {...register('derecho', { required: true })}
+                                    {...register('duccionesDerecho', { required: true })}
 
                                 />
 
                                 <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>O.I:</span>
                                 <input type="text" className='w-2/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                    {...register('izquierdo', { required: true })}
+                                    {...register('duccionesIzquierdo', { required: true })}
 
                                 />
                             </div>
@@ -304,13 +306,13 @@ function TasksFormPage() {
                                 <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>O.D:</span>
 
                                 <input type="text" className='w-2/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                    {...register('derecho', { required: true })}
+                                    {...register('fondoOjoDerecho', { required: true })}
 
                                 />
 
                                 <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>O.I:</span>
                                 <input type="text" className='w-2/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                    {...register('izquierdo', { required: true })}
+                                    {...register('fondoOjoIzquierdo', { required: true })}
 
                                 />
                             </div>
@@ -322,13 +324,13 @@ function TasksFormPage() {
                                 <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>O.D:</span>
 
                                 <input type="text" className='w-2/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                    {...register('derecho', { required: true })}
+                                    {...register('queratometriaDerecho', { required: true })}
 
                                 />
 
                                 <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>O.I:</span>
                                 <input type="text" className='w-2/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                    {...register('izquierdo', { required: true })}
+                                    {...register('queratometriaIzquierdo', { required: true })}
 
                                 />
                             </div>
@@ -342,20 +344,20 @@ function TasksFormPage() {
                                 <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>Detalle:</span>
 
                                 <input type="text" className='w-2/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                    {...register('derecho', { required: true })}
+                                    {...register('retinoscopiaDetalle', { required: true })}
 
                                 />
 
                                 <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>O.D:</span>
 
                                 <input type="text" className='w-1/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                    {...register('derecho', { required: true })}
+                                    {...register('retinoscopiaDerecho', { required: true })}
 
                                 />
 
                                 <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>O.I:</span>
                                 <input type="text" className='w-1/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                    {...register('izquierdo', { required: true })}
+                                    {...register('retinoscopiaIzquierdo', { required: true })}
 
                                 />
                             </div>
@@ -368,13 +370,13 @@ function TasksFormPage() {
                                     <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle', marginRight: '10px' }}>O.D:</span>
 
                                     <input type="text" className='w-full bg-zinc-700 text-white px-4 rounded-md my-2'
-                                        {...register('derecho', { required: true })}
+                                        {...register('subjetivoDerecho', { required: true })}
 
                                     />
 
                                     <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle', marginRight: '10px' }}>O.I:</span>
                                     <input type="text" className='w-full bg-zinc-700 text-white px-4 rounded-md my-2'
-                                        {...register('izquierdo', { required: true })}
+                                        {...register('subjetivoIzquierdo', { required: true })}
 
                                     />
                                 </div>

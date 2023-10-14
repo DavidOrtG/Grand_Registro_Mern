@@ -21,6 +21,7 @@ export const AuthProvider = ({ children }) => {
     const signup = async (user) => {
         try {
             const res = await registerRequest(
+                console.log(res),
                 {
                     email: user.email,
                     password: user.password,
