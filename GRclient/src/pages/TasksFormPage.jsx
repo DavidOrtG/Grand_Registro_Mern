@@ -7,7 +7,7 @@ function TasksFormPage() {
     const { createTask, tasks } = useTasks()
     console.log(createTask());
 
-    const onSubmit = handleSubmit((data) => {
+    const onSubmit = handleSubmit(async (data) => {
         createTask(data);
     });
 
@@ -147,13 +147,13 @@ function TasksFormPage() {
                             <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>O.D:</span>
 
                             <input type="text" className='w-2/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                {...register('derecho', { required: true })}
+                                {...register('lensometriaDerecho', { required: true })}
 
                             />
 
                             <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>O.I:</span>
                             <input type="text" className='w-2/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                {...register('izquierdo', { required: true })}
+                                {...register('lensometriaIzquierdo', { required: true })}
 
                             />
                         </div>
