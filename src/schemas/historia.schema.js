@@ -1,30 +1,30 @@
 import { z } from "zod";
 
 export const createHistoriaSchema = z.object({
-  cod_historia: z.number().int().positive({
+  cod_historia: z.number({required_error: "cod_historia is required"}).int().positive({
     required_error: "Cod_historia must be a positive integer",
   }),
-  paciente: z.string().min(1, {
+  paciente: z.string({required_error: "paciente is required"}).min(1, {
     required_error: "Paciente is required",
   }),/* 
   medico: z.string().min(1, {
     required_error: "Medico is required",
   }), */
   rif: z.object({
-    dias: z.number().int().nonnegative({
+    dias: z.number({required_error: "dias is required"}).int().nonnegative({
       required_error: "Rif.dias must be a positive integer",
     }),
-    meses: z.number().int().nonnegative({
+    meses: z.number({required_error: "meses is required"}).int().nonnegative({
       required_error: "Rif.meses must be a positive integer",
     }),
-    anos: z.number().int().nonnegative({
+    anos: z.number({required_error: "anos is required"}).int().nonnegative({
       required_error: "Rif.anos must be a positive integer",
     }),
   }),
   /* fecha: z.date().min(new Date(), {
     required_error: "Fecha is required and must be a valid date",
   }), */
-  motivos: z.string().min(1, {
+  motivos: z.string({required_error: "motivos is required"}).min(1, {
     required_error: "Motivos is required",
   }),
   antecedentes: z.string({required_error: "antecedentes is required"}),
