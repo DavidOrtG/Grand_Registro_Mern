@@ -3,7 +3,7 @@ import { createHistoria } from "../api/tasks";
 
 export const TaskContext = createContext();
 
-    export const useTasks = () => {
+export const useTasks = () => {
     const context = useContext(TaskContext);
 
     if (!context) {
@@ -11,7 +11,7 @@ export const TaskContext = createContext();
     }
 
     return context;
-};
+}
 
 export function TaskProvider({ children }) {
 
@@ -20,6 +20,7 @@ export function TaskProvider({ children }) {
     const createTask = async (task) =>{
         const res = await createHistoria(task)
         console.log(res)
+        setTasks(res.data);
     };
 
 
@@ -28,5 +29,4 @@ export function TaskProvider({ children }) {
             {children}
         </TaskContext.Provider>
     );
-
 }
