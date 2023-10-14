@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
-import { createTaskRequest } from "../api/tasks";
+import { createHistoria } from "../api/tasks";
 
-const TaskContext = createContext();
+export const TaskContext = createContext();
 
     export const useTasks = () => {
     const context = useContext(TaskContext);
@@ -18,7 +18,7 @@ export function TaskProvider({ children }) {
     const [tasks, setTasks] = useState([]);
 
     const createTask = async (task) =>{
-        const res = await createTaskRequest(task)
+        const res = await createHistoria(task)
         console.log(res)
     };
 

@@ -1,11 +1,11 @@
 import axios from './axios';
 
-export const getTasksRequest = () => axios.get("/historias");
+export const getHistorias = () => axios.get("/historias");
 
-export const getTaskRequest = (id) => axios.get(`/historias/${id}`);
+export const getHistoria = (id) => axios.get(`/historias/${id}`);
 
-export const createTaskRequest = (task) => axios.post("/historias", task);
+export const createHistoria = (task) => axios.post("/historias", task);
 
-export const updateTaskRequest = (task) => axios.put(`/historias/${task._id}`, task);
+export const updateHistoria = (historia) => axios.put(`/historias/${historia._id}`, historia);
 
-export const deleteTaskRequest = (id) => axios.delete(`/historias/${id}`);
+export const deleteHistoria = (id) => axios.delete(`/historias/${id}`);
