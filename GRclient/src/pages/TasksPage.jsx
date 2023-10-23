@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useTasks } from '../context/TaskContext'
+import PacientesCard from '../components/PacientesCard'
 
 function TasksPage() {
 
@@ -12,13 +13,9 @@ function TasksPage() {
   if (tasks.lenght == 0) return (<h1>No hay pacientes</h1>);
 
   return (
-    <div>
+    <div className='grid grid-cols-3 gap-2'>
       {tasks.map((task) => (
-        <div key={task._id}>
-          <h1>{task.nombres}</h1>
-          <p>{task.apellidos}</p>
-          <p>{task.documento.num_doc}</p>
-        </div>
+        <PacientesCard task={task} key={task._id} />
       ))}
     </div>
   );
