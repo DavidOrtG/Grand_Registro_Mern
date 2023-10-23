@@ -11,7 +11,7 @@ function RegisterPage() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (isAuthenticated) navigate('/historias')
+        if (isAuthenticated) navigate('/pacientes')
     }, [isAuthenticated])
 
     console.log(user)

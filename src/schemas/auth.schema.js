@@ -1,8 +1,8 @@
-import {z} from 'zod';
+import { z } from 'zod';
 
 export const registerSchema = z.object({
 
-    email:z.string({
+    email: z.string({
         required_error: 'Email is required'
     }).email({
         message: 'Invalid email'
@@ -16,12 +16,12 @@ export const registerSchema = z.object({
         required_error: 'Cod_emp is required'
     }),
     documento: z.object({
-      tipo_doc: z.string({
-         required_error: 'Tipo_doc is required'
+        tipo_doc: z.string({
+            required_error: 'Tipo_doc is required'
         }),
-      num_doc: z.string({
-        required_error: 'num_doc is required'
-       }),
+        num_doc: z.string({
+            required_error: 'num_doc is required'
+        }),
     }),
     nombres: z.string({
         required_error: 'nombres is required'
@@ -46,15 +46,15 @@ export const registerSchema = z.object({
     })),
 });
 
-    
+
 export const loginSchema = z.object({
     email: z.string({
-        required_error:"Email is required"
+        required_error: "Email is required"
     }).email({
-        message:"Correo o contraseña Incorrecta"
+        message: "Correo o contraseña Incorrecta"
     }),
     password: z
-    .string({
-        required_error: "Password is required"
-    }),
+        .string({
+            required_error: "Password is required"
+        }),
 })

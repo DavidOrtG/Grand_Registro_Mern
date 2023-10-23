@@ -15,8 +15,8 @@ const router = Router();
 
 router.get('/historias', authRequired, getHistorias);
 router.get('/historias/:id', authRequired, getHistoria);
-//router.post('/historias', authRequired, validateSchema(createHistoriaSchema), createHistoria);
-router.post('/historias', authRequired, createHistoria);
+router.post('/historias', authRequired, validateSchema(createHistoriaSchema), createHistoria);
+//router.post('/historias', authRequired, createHistoria);
 
 router.delete('/historias/:id', authRequired, deleteHistoria);
 router.put('/historias/:id', authRequired, updateHistoria);

@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const createPacienteSchema = z.object({
-  cod_paciente: z.number().int().positive({
+  cod_paciente: z.string({
     required_error: "Cod_paciente must be a positive integer",
   }),
   documento: z.object({
@@ -18,15 +18,15 @@ export const createPacienteSchema = z.object({
   apellidos: z.string({
     required_error: "Apellidos is required",
   }),
-  fecha_nacimiento: z.date().min(new Date(), {
+  fecha_nacimiento: z.string(new Date(), {
     required_error: "Fecha_nacimiento is required and must be a valid date",
   }),
   genero: z.string({
     required_error: "Genero is required",
   }),
-  telefono: z.array(z.string()).min(1, {
-    required_error: "Telefono is required",
-  }),
+  telefono: z.array(z.string({
+    required_error: 'Telefono is required'
+  })),
   ocupacion: z.string({
     required_error: "Ocupacion is required",
   }),

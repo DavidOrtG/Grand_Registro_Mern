@@ -1,7 +1,7 @@
 import Paciente from '../models/paciente.model.js';
 
 export const getPacientes = async (req, res) => {
-    const pacientes = await Paciente.find().populate('medico');
+    const pacientes = await Paciente.find();
     res.json(pacientes)
 };
 

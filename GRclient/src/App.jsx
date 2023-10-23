@@ -22,9 +22,9 @@ function App() {
             <Route path='/register' element={<RegisterPage />} />
 
             <Route element={<ProtectedRoute />} >
-              <Route path='/historias' element={<TasksPage />} />
-              <Route path='/add-historia' element={<TasksFormPage />} />
-              <Route path='/historias/:id' element={<TasksFormPage />} />
+              <Route path='/pacientes' element={<TasksPage />} />
+              <Route path='/add-paciente' element={<TasksFormPage />} />
+              <Route path='/pacientes/:id' element={<TasksFormPage />} />
               <Route path='/profile' element={<ProfilePage />} />
             </Route>
           </Routes>
