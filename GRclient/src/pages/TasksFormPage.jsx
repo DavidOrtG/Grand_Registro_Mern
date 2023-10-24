@@ -1,14 +1,28 @@
 import { useForm } from "react-hook-form";
 import { useTasks } from "../context/TaskContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 function TasksFormPage() {
 
     const { register, handleSubmit } = useForm();
-    const { createTask, tasks } = useTasks()
+    const { createTask, tasks, getTask } = useTasks()
     console.log(createTask());
 
     const navigate = useNavigate();
+    const params = useParams();
+
+    useEffect(() => {
+        async function loadTask() {
+            if (params.id) {
+                const task = await getTask(params.id);
+                console.log(task);
+                setValue('cod_paciente', task.cod_paciente);
+                setValue('tipo_doc', task.tipo_doc);
+                setValue('num_doc', task.num_doc);
+            }
+        }
+    }, []);
 
     const onSubmit = handleSubmit((data) => {
         createTask(data);
@@ -41,7 +55,7 @@ function TasksFormPage() {
                             <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>Número de Cédula:</span>
 
                             <input type="text" className='w-3/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                placeholder='Numero de Cedula' {...register('num_doc', "cod_paciente", { required: true })}
+                                placeholder='Numero de Cedula' {...register('num_doc' ,{ required: true })}
                                 onInput={(e) => {
                                     e.target.value = e.target.value.replace(/\D/g, '');
                                 }}

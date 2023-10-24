@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { createPaciente, getPacientes, deletePaciente } from "../api/tasks";
+import { createPaciente, getPacientes, deletePaciente, getPaciente } from "../api/tasks";
 
 const TaskContext = createContext();
 
@@ -25,7 +25,7 @@ export function TaskProvider({ children }) {
         } catch (error) {
             console.log(error);
         }
-    }
+    };
 
     const createTask = async (task) => {
         const res = await createPaciente(
@@ -45,8 +45,7 @@ export function TaskProvider({ children }) {
                 direccion: task.direccion,
                 correo_e: task.correo_e
             });
-        console.log(res)
-    }
+    };
 
     const deleteTask = async (id) => {
         try {
@@ -58,12 +57,22 @@ export function TaskProvider({ children }) {
 
     };
 
+    const getTask = async (id) => {
+        try {
+            const res = await getPaciente(id);
+            return res.data;
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
     return (
         <TaskContext.Provider value={{
             tasks,
             createTask,
             getTasks,
             deleteTask,
+            getTask
         }}>
             {children}
         </TaskContext.Provider>
