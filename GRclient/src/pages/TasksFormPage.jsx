@@ -6,26 +6,39 @@ import { useEffect } from "react";
 function TasksFormPage() {
 
     const { register, handleSubmit } = useForm();
-    const { createTask, tasks, getTask } = useTasks()
+    const { createTask, tasks, getTask, updateTask } = useTasks()
     console.log(createTask());
 
     const navigate = useNavigate();
     const params = useParams();
 
     useEffect(() => {
-        async function loadTask() {
+        async function loadPaciente() {
             if (params.id) {
-                const task = await getTask(params.id);
-                console.log(task);
-                setValue('cod_paciente', task.cod_paciente);
-                setValue('tipo_doc', task.tipo_doc);
-                setValue('num_doc', task.num_doc);
+                const task = await getTask(params.id)
+                console.log(task)
+                setValue('cod_paciente', task.cod_paciente)
+                setValue('num_doc', task.documento.num_doc)
+                setValue('tipo_doc', task.documento.tipo_doc)
+                setValue('nombres', task.nombres)
+                setValue('apellidos', task.apellidos)
+                setValue('fecha_nacimiento', task.fecha_nacimiento)
+                setValue('genero', task.genero)
+                setValue('telefono', task.telefono)
+                setValue('ocupacion', task.ocupacion)
+                setValue('direccion', task.direccion)
+                setValue('correo_e', task.correo_e)
             }
         }
+        loadPaciente()
     }, []);
 
     const onSubmit = handleSubmit((data) => {
-        createTask(data);
+        if (params.id) {
+            updateTask(params.id, data);
+        } else {
+            createTask(data);
+        }
         navigate("/pacientes");
     });
 
@@ -55,7 +68,7 @@ function TasksFormPage() {
                             <span style={{ whiteSpace: "nowrap", verticalAlign: 'middle' }}>Número de Cédula:</span>
 
                             <input type="text" className='w-3/4 bg-zinc-700 text-white px-4 rounded-md my-2'
-                                placeholder='Numero de Cedula' {...register('num_doc' ,{ required: true })}
+                                placeholder='Numero de Cedula' {...register('num_doc', { required: true })}
                                 onInput={(e) => {
                                     e.target.value = e.target.value.replace(/\D/g, '');
                                 }}
