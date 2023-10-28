@@ -31,7 +31,7 @@ function LoginPage() {
           ))
         }
 
-        <h1 className='text-2xl font-bold'>Iniciar Sesión</h1>
+        <h1 className='text-2xl font-bold justify-center'>Iniciar Sesión</h1>
 
         <form onSubmit={onSubmit}>
           <label htmlFor="email">Email:</label>
@@ -50,7 +50,7 @@ function LoginPage() {
 
           {errors.password && (<p className="text-red-500"> La contraseña es requerida!</p>)}
 
-          <button type='submit'>
+          <button className="bg-sky-950 px-4 py-1 rounded-sm" type='submit'>
             Ingresar
           </button>
         </form>
