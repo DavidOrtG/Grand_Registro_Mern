@@ -1,25 +1,25 @@
 import { createContext, useContext, useState } from "react";
-import { createPaciente, getPacientes, deletePaciente, getPaciente, updatePaciente } from "../api/tasks";
+import { createHistoria, getHistorias, deleteHistoria, getHistoria, updateHistoria } from "../api/historias";
 
-const TaskContext = createContext();
+const HistoriaContext = createContext();
 
 export const useHistoria = () => {
-    const context = useContext(TaskContext);
+    const context = useContext(HistoriaContext);
 
     if (!context) {
-        throw new Error('useTasks must be used within a TaskProvider');
+        throw new Error('useHistoria must be used within a HistoriaProvider');
     }
 
     return context;
 }
 
-export function TaskProvider({ children }) {
+export function HistoriaProvider({ children }) {
 
-    const [tasks, setTasks] = useState([]);
+    const [historias, setTasks] = useState([]);
 
     const getTasks = async () => {
         try {
-            const res = await getPacientes();
+            const res = await getHistorias();
             setTasks(res.data);
             console.log(res)
         } catch (error) {
@@ -27,30 +27,86 @@ export function TaskProvider({ children }) {
         }
     };
 
-    const createTask = async (task) => {
-        const res = await createPaciente(
+    const createTask = async (hist) => {
+        const res = await createHistoria(
             {
-                cod_paciente: task.cod_paciente,
-                documento:
-                {
-                    tipo_doc: task.tipo_doc,
-                    num_doc: task.num_doc
+                cod_historia: hist.cod_historia,
+                paciente: hist.paciente,
+                rif: {
+                  dias: hist.dias,
+                  meses: hist.meses,
+                  anos: hist.anos,
                 },
-                nombres: task.nombres,
-                apellidos: task.apellidos,
-                fecha_nacimiento: task.fecha_nacimiento,
-                genero: task.genero,
-                telefono: [task.telefono],
-                ocupacion: task.ocupacion,
-                direccion: task.direccion,
-                correo_e: task.correo_e
-            });
+                fecha: hist.fecha,
+                motivos: hist.motivos,
+                antecedentes: hist.antecedentes,
+                examen_externo: hist.examen_externo,
+                lensometria: {
+                  derecho: hist.lensometriaDerecho,
+                  izquierdo: hist.lensometriaIzquierdo,
+                },
+                agudeza_visual: {
+                  sin_correccion: {
+                    lejana: {
+                      derecho: hist.lejanaDerechoSinCorreccion,
+                      izquierdo: hist.lejanaIzquierdoSinCorreccion,
+                    },
+                    proxima: {
+                      derecho: hist.proximaDerechoSinCorreccion,
+                      izquierdo: hist.proximaIzquierdoSinCorreccion,
+                    },
+                  },
+                  con_correccion: {
+                    lejana: {
+                      derecho: hist.lejanaDerechoConCorreccion,
+                      izquierdo: hist.lejanaIzquierdoConCorreccion,
+                    },
+                    proxima: {
+                      derecho: hist.proximaDerechoConCorreccion,
+                      izquierdo: hist.proximaIzquierdoConCorreccion,
+                    },
+                  },
+                },
+                cover_test: {
+                  derecho: hist.coverTestDerecho,
+                  izquierdo: hist.coverTestIzquierdo,
+                },
+                versiones: hist.versiones,
+                ducciones: {
+                  derecho: hist.duccionesDerecho,
+                  izquierdo: hist.duccionesIzquierdo,
+                },
+                ppc: hist.ppc,
+                hirschberg: hist.hirschberg,
+                fondo_ojo: {
+                  derecho: hist.fondoOjoDerecho,
+                  izquierdo: hist.fondoOjoIzquierdo,
+                },
+                queratometria: {
+                  derecho: hist.queratometriaDerecho,
+                  izquierdo: hist.queratometriaIzquierdo,
+                },
+                retinoscopia: {
+                  detalle: hist.retinocopiaDetalle,
+                  derecho: hist.retinocopiaDerecho,
+                  izquierdo: hist.retinocopiaIzquierdo,
+                },
+                subjetivo: {
+                  derecho: hist.subjetivoDerecho,
+                  izquierdo: hist.subjetivoIzquierdo,
+                  add: hist.add,
+                  dp: hist.dp,
+                },
+                diagnostico: hist.diagnostico,
+                tratamiento: hist.tratamiento,
+                evolucion: hist.evolucion,
+              });
     };
 
     const deleteTask = async (id) => {
         try {
-            const res = await deletePaciente(id);
-            if (res.status == 204) setTasks(tasks.filter(task => task._id != id))
+            const res = await deleteHistoria(id);
+            if (res.status == 204) setTasks(historias.filter(task => hist._id != id))
         } catch (error) {
 
         }
@@ -59,16 +115,16 @@ export function TaskProvider({ children }) {
 
     const getTask = async (id) => {
         try {
-            const res = await getPaciente(id);
+            const res = await getHistoria(id);
             return res.data
         } catch (error) {
             console.log(error)
         }
     };
 
-    const updateTask = async (id, task) => {
+    const updateTask = async (id, hist) => {
         try {
-            await updatePaciente(id, task);
+            await updateHistoria(id, hist);
         } catch (error) {
             console.log(error);
         }
@@ -76,8 +132,8 @@ export function TaskProvider({ children }) {
     }
 
     return (
-        <TaskContext.Provider value={{
-            tasks,
+        <HistoriaContext.Provider value={{
+            historias,
             createTask,
             getTasks,
             deleteTask,
@@ -85,6 +141,6 @@ export function TaskProvider({ children }) {
             updateTask
         }}>
             {children}
-        </TaskContext.Provider>
+        </HistoriaContext.Provider>
     );
 }

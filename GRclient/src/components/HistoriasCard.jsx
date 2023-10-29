@@ -1,25 +1,29 @@
-import { useTasks } from "../context/TaskContext"
+import { useHistoria } from "../context/HistoriaContext";
 import { Link } from "react-router-dom";
 
-function PacientesCard({ task }) {
+function HistoriasCard({ hist }) {
 
     const { deleteTask } = useHistoria();
 
     return (
+        
         <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
-            <h1>Nombres y Apellidos:</h1>
+            <h1>Codigo de historia:</h1>
             <div className="flex my-2">
-                <h1 className="text-2xl font-bold whitespace-pre ">{task.nombres}</h1>
-                <p className="text-2xl font-bold whitespace-pre mx-1">{task.apellidos}</p>
+                <h1 className="text-2xl font-bold whitespace-pre ">{hist.cod_historia}</h1>
             </div>
-
-            <p className="text-slate-300">Número de Cedula: {task.documento.num_doc}</p>
-            <p className="text-slate-300">Fecha de Creación: {new Date(task.createdAt).toLocaleDateString()}</p>
+            
+            <h1>Creada Por:</h1>
+            <div className="flex my-2">
+                <h1 className="text-2xl font-bold whitespace-pre ">{hist.medico.nombres}</h1>
+                <h1 className="text-2xl font-bold whitespace-pre mx-1">{hist.medico.apellidos}</h1>
+            </div>
+            <p className="text-slate-300">Fecha de Creación: {new Date(hist.createdAt).toLocaleDateString()}</p>
 
             <div className="flex justify-between my-3">
-                <button className="bg-red-700 px-4 py-1 rounded-sm" onClick={() => { deleteTask(task._id); }}>Borrar Paciente</button>
+                <button className="bg-red-700 px-4 py-1 rounded-sm" onClick={() => { deleteTask(hist._id); }}>Borrar Historia</button>
                 <button className="bg-cyan-700 px-4 py-1 rounded-sm" >
-                    <Link to={`/pacientes/${task._id}`}>Actualizar Paciente</Link>
+                    <Link to={`/historias/${hist._id}`}>Actualizar Historia</Link>
                 </button>
             </div>
 
@@ -30,4 +34,4 @@ function PacientesCard({ task }) {
     )
 }
 
-export default PacientesCard
+export default HistoriasCard

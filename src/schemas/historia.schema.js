@@ -21,7 +21,7 @@ export const createHistoriaSchema = z.object({
       required_error: "Rif.anos must be a positive integer",
     }),
   }),
-  fecha: z.date().min(new Date(), {
+  fecha: z.string(new Date(), {
     required_error: "Fecha is required and must be a valid date",
   }),
   motivos: z.string().min(1, {
