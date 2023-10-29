@@ -7,6 +7,8 @@ import TasksPage from "./pages/TasksPage"
 import TasksFormPage from "./pages/TasksFormPage"
 import ProfilePage from "./pages/ProfilePage"
 import HomePage from "./pages/HomePage"
+import HistoriasPage from "./pages/HistoriasPage"
+import TaskHistoriaPage from "./pages/TaskHistoriaPage"
 
 import ProtectedRoute from './ProtectedRoute'
 import { TaskProvider } from "./context/TaskContext"
@@ -28,6 +30,10 @@ function App() {
                 <Route path='/pacientes' element={<TasksPage />} />
                 <Route path='/add-paciente' element={<TasksFormPage />} />
                 <Route path='/pacientes/:id' element={<TasksFormPage />} />
+                
+                <Route path='/historias' element={<HistoriasPage />} />
+                <Route path='/add-historia' element={<TaskHistoriaPage />} />
+                <Route path='/historias/:id' element={<TaskHistoriaPage />} />
                 <Route path='/profile' element={<ProfilePage />} />
               </Route>
             </Routes>
