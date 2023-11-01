@@ -69,7 +69,7 @@ function TaskHistoriaPage() {
         } else {
             createTask(data);
         }
-        //navigate("/historias");
+        navigate("/historias");
     });
 
 
