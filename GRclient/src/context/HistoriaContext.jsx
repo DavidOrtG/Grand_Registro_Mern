@@ -87,9 +87,9 @@ export function HistoriaProvider({ children }) {
                   izquierdo: hist.queratometriaIzquierdo,
                 },
                 retinoscopia: {
-                  detalle: hist.retinocopiaDetalle,
-                  derecho: hist.retinocopiaDerecho,
-                  izquierdo: hist.retinocopiaIzquierdo,
+                  detalle: hist.retinoscopiaDetalle,
+                  derecho: hist.retinoscopiaDerecho,
+                  izquierdo: hist.retinoscopiaIzquierdo,
                 },
                 subjetivo: {
                   derecho: hist.subjetivoDerecho,

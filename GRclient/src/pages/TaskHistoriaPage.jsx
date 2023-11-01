@@ -69,7 +69,7 @@ function TaskHistoriaPage() {
         } else {
             createTask(data);
         }
-        navigate("/historias");
+        //navigate("/historias");
     });
 
 
@@ -90,13 +90,13 @@ function TaskHistoriaPage() {
                         />
                     </div>
 
-                    <div style={{ display: 'flex', justifyContent: 'space-between', }}>
+                    {/*  <div style={{ display: 'flex', justifyContent: 'space-between', }}>
                         <label htmlFor="medico" style={{ whiteSpace: "nowrap", marginRight: '10px' }}>Medico que atiende: </label>
                         <input id='medico' type="text" placeholder='Medico' style={{ whiteSpace: "nowrap", marginRight: '10px', verticalAlign: 'middle' }}
                             {...register('medico', { required: true })}
                             className="w-full bg-zinc-700 text-white px-4 rounded-md my-2"
                         />
-                    </div>
+                    </div> */}
 
                     <div style={{ display: 'flex', justifyContent: 'space-between', }}>
                         <label htmlFor="paciente" style={{ whiteSpace: "nowrap", marginRight: '10px' }}>Paciente: </label>
@@ -107,21 +107,21 @@ function TaskHistoriaPage() {
                     </div>
 
                     <div style={{ display: 'flex', justifyContent: 'space-between', }}>
-                        <label style={{ whiteSpace: "nowrap", marginRight: '30px' }}> Tiempo desde ultima consulta (Rif): </label>
+                        <label style={{ whiteSpace: "nowrap", marginRight: '10px' }}> Rif: </label>
                         <label htmlFor="dias" style={{ marginRight: '10px' }}>Dias: </label>
                         <input id='dias' type="text" style={{ whiteSpace: "nowrap", marginRight: '20px', verticalAlign: 'middle' }}
                             {...register('dias', { required: true })}
-                            className="w-1/6 bg-zinc-700 text-white px-4 rounded-md my-2"
+                            className="w-3/6 bg-zinc-700 text-white px-4 rounded-md my-2"
                         />
                         <label htmlFor="meses" style={{ marginRight: '10px' }} >Meses: </label>
                         <input id='meses' type="text" style={{ whiteSpace: "nowrap", marginRight: '20px', verticalAlign: 'middle' }}
                             {...register('meses', { required: true })}
-                            className="w-1/6 bg-zinc-700 text-white px-4 rounded-md my-2"
+                            className="w-3/6 bg-zinc-700 text-white px-4 rounded-md my-2"
                         />
                         <label htmlFor="anos" style={{ marginRight: '10px' }} >Años: </label>
                         <input id='anos' type="text" style={{ whiteSpace: "nowrap", marginRight: '20px', verticalAlign: 'middle' }}
                             {...register('anos', { required: true })}
-                            className="w-1/6 bg-zinc-700 text-white px-4 rounded-md my-2"
+                            className="w-3/6 bg-zinc-700 text-white px-4 rounded-md my-2"
                         />
 
                     </div>
@@ -135,9 +135,9 @@ function TaskHistoriaPage() {
                     </div>
 
                     <div>
-                        <label htmlFor="motivo" style={{ marginRight: '10px' }}>Motivo de la consulta: </label>
-                        <textarea id='motivo' rows="2" placeholder="Motivo"
-                            {...register('motivo', { required: true })}
+                        <label htmlFor="motivos" style={{ marginRight: '10px' }}>Motivo de la consulta: </label>
+                        <textarea id='motivos' rows="2" placeholder="Motivos"
+                            {...register('motivos', { required: true })}
                             className="w-full bg-zinc-700 text-white px-4 py-1 rounded-md my-2">
 
                         </textarea>
